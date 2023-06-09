@@ -1,0 +1,13 @@
+#!/bin/bash
+xmodmap .Xmodmap &
+xbanish &
+pulseaudio -D &
+#mpd &
+brightnessctl s 60% -e &
+sxhkd 2> .sxhkd.log &
+dwmblocks &
+while true; do
+	[[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
+	setbg.sh &
+	dwm 2> .dwm.log
+done
